@@ -5,10 +5,45 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
+// importing App logo Image
+import jsBadgeImage from "./assets/images/js-Badge.svg";
+
+// functions for clearing out the form fields and other things from the DOM(Document Object Module)
+// for cities and states
+function clearFields() {
+    $("#location").val("");
+    $(".showErrors").text("");
+    $(".showHumidity").text("");
+    $(".showTemp").text("");
+    $(".showTempCelsius").text("");
+    $(".showTempFahrenheit").text("");
+}
+// for countries
+function clearCountryFields() {
+    $("#country").val("");
+    $(".showErrorsCountry").text("");
+    $(".showHumidityCountry").text("");
+    $(".showTempCountry").text("");
+    $(".showTempCelsiusCountry").text("");
+    $(".showTempFahrenheitCountry").text("");
+}
+
+
+
 $(document).ready(function () {
+
+    // working with the jsBadge Image when app is ready
+    let myAppLogo = $("#appImg");
+    myAppLogo.attr("href", jsBadgeImage);
+
+
+
     $('#weatherLocation').click(function () {
         const city = $('#location').val();
         $('#location').val("");
+        
+        // calling the clearFields function
+        clearFields();
         
         let request = new XMLHttpRequest();
         const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`
@@ -18,7 +53,7 @@ $(document).ready(function () {
         // function that listens for changes to the XMLHttpRequest
         request.onreadystatechange = function () {
             // having a code that logs to the console any ready state changes 
-            console.log(this.readyState);
+            // console.log(this.readyState);
             // this console code worked and I was able to see 1 2 3 4.... and the meaning is thus: 1: Opened, 2: Headers Received, 3: Loading, 4: Done 
             /*Note: If you try this in the console yourself, ESLint will freak out with a no-unused-vars error. This is because the getElements() function we define later in the code is no longer used. You'll need to temporarily comment it out to soothe ESLint. Also, make sure to return the code to its original state after you're done. */
             if (this.readyState === 4 && this.status === 200) {
@@ -41,7 +76,7 @@ $(document).ready(function () {
 
             let myTempValue = 1.8 * (response.main.temp - 273) + 32;
             // let myTempValue = Math.trunc(1.8 * (response.main.temp - 273) + 32); -- I didn't trunc or floor the values because I want my value to be concised for my users
-            console.log(myTempValue);
+            // console.log(myTempValue);
             // In this code, getElements(response) won't be called until the conditional becomes true. In other words, by using a callback, we ensure the function doesn't run until after we get a response from the server.
             $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
             $('.showTemp').text(`The temperature in Kelvin is ${response.main.temp}k.`);
@@ -64,6 +99,8 @@ $(document).ready(function () {
         const country = $('#country').val();
         $('#country').val("");
 
+        // calling the clearFields function for country's form
+        clearCountryFields();
 
         let secondrequest = new XMLHttpRequest();
         
@@ -74,7 +111,7 @@ $(document).ready(function () {
         // function that listens for changes to the XMLHttpRequest
         secondrequest.onreadystatechange = function () {
             // having a code that logs to the console any ready state changes 
-            console.log(this.readyState);
+            // console.log(this.readyState);
             // this console code worked and I was able to see 1 2 3 4.... and the meaning is thus: 1: Opened, 2: Headers Received, 3: Loading, 4: Done 
             /*Note: If you try this in the console yourself, ESLint will freak out with a no-unused-vars error. This is because the getElements() function we define later in the code is no longer used. You'll need to temporarily comment it out to soothe ESLint. Also, make sure to return the code to its original state after you're done. */
             if (this.readyState === 4 && this.status === 200) {
@@ -96,7 +133,7 @@ $(document).ready(function () {
 
             let myTempValue = 1.8 * (secondresponse.main.temp - 273) + 32;
             // let myTempValue = Math.trunc(1.8 * (response.main.temp - 273) + 32); -- I didn't trunc or floor the values because I want my value to be concised for my users
-            console.log(myTempValue);
+            // console.log(myTempValue);
             
             
             // for the country temperatures: remember the 2nd form only takes in a parameter which is: country

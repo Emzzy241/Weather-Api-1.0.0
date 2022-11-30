@@ -30,10 +30,14 @@ _In this application, you experience how powerful the term API is and you also g
 * 6. Ensure you take part in the no5 otherwise you'll get a "401: invalid api key" error. If you do get lost on the way, you can contact me below with the contact details I supplied below
 
 
+
 ## Detected Bugs/ Issues
 * _No detected bugs_
 * _The one bug you will definitely encounter is if you fail to follow any of the Setup/Installation Information I gave you_
-* _Note: as at the launch of this Application there are no bugs but this is not the finished product as I will be adding more features later on. If anyone comes in contact with a bug, be sure to hit me up on social media or email me @emzzyoluwole@gmail.com. WATCH OUT FOR VERSION 1.1 WHICH IS COMING SOON_
+* _Note: as at the launch of this Application there are no bugs but this is not the finished product as I will be adding more features later on. If anyone comes in contact with a bug, be sure to hit me up on social media or email me @emzzyoluwole@gmail.com. WATCH OUT FOR VERSION 1.1.0 WHICH IS COMING SOON. Also in version 1.1.0, I would be making use of some thing called promise to make my API call._
+
+## WebLink
+https://emzzy241.github.io/Weather-Api-1.0.0/
 
 ## License
 Licensed under the GNU General Public License
